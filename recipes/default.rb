@@ -3,16 +3,14 @@
 # Recipe:: default
 #
 
-template "/etc/apt/sources.list.d/virtualbox.list" do
-  mode 0644
-  variables :code_name => node[:lsb][:codename]
-  notifies :run, resources(:execute => "apt-get update"), :immediately
-  source "virtualbox.list.erb"
-end
+include_recipe "apt"
 
-execute "install virtualbox apt gpg key" do
-  command "wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -"
-  not_if "apt-key list | grep -i virtualbox"
+apt_repository "virtualbox" do
+  uri "http://download.virtualbox.org/virtualbox/debian"
+  distribution node["lsb"]["codename"]
+  components ["contrib"]
+  key "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc"
+  action :add
 end
 
 %w[

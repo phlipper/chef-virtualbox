@@ -11,6 +11,11 @@ The following platforms are supported by this cookbook, meaning that the recipes
 
 * Ubuntu
 
+## Cookbooks
+
+* `apt`
+
+
 # RECIPES
 
 * `default`, Default recipe

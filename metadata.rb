@@ -6,3 +6,5 @@ description       "Install Virtualbox and Guest Additions"
 version           "0.1.0"
 supports          "ubuntu"
 recipe            "default", "Install Virtualbox and Guest Additions"
+
+depends "apt"
