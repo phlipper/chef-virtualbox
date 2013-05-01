@@ -13,10 +13,9 @@ apt_repository "virtualbox" do
   action :add
 end
 
-%w[
-  smbios-utils libsmbios2
-  virtualbox-guest-additions virtualbox-ose-guest-utils
-  virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
-].each do |pkg|
-  package pkg
-end
+package "smbios-utils"
+package "libsmbios2"
+package "virtualbox-guest-additions"
+package "virtualbox-ose-guest-utils"
+package "virtualbox-ose-guest-x11"
+package "virtualbox-ose-guest-dkms"
